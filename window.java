@@ -75,14 +75,6 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyChar()=='w')
-		{
-			if(!jump)
-			{
-				jump = true;
-				player1.up = true;
-			}
-		}
 		if(e.getKeyChar()=='a')
 			moveLeft = true;
 		
@@ -92,7 +84,7 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 		if(e.getKeyChar()=='d')
 			moveRight = true;
 		
-		if(e.getKeyCode() == KeyEvent.VK_SPACE)
+		if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyChar() == 'w')
 		{
 			if(!jump)
 			{
