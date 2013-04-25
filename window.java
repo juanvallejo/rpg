@@ -12,8 +12,7 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 {
 	private static final long serialVersionUID = 1L;
 	hero player1 = null;
-	private boolean moveLeft, moveRight, jump = false;
-	private int jc, dc = 0;
+	private boolean moveLeft, moveRight;
 	public window()
 	{
 		setBackground(Color.DARK_GRAY);
@@ -35,27 +34,9 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	    	  if(moveLeft)
 	    		  player1.moveX(-player1.dx);
 	    	  
-	    	  if(jump)
+	    	  if(player1.isJumping)
 	    	  {
-	    		  jc++;
-	    		  if(player1.up)
-	    			  player1.moveY(-3);
-	    		  
-	    		  if(!player1.up)
-	    		  {
-	    			  player1.moveY(3);
-	    			  dc++;
-	    			  if(dc==10)
-	    			  {
-	    				  jump = false;
-	    				  dc = 0;
-	    			  }
-	    		  }
-	    		  if(jc==10)
-	    		  {
-	    			  player1.up = false;
-	    			  jc = 0;
-	    		  }
+	    		  player1.jump();
 	    	  }
 	    	  
 	    	  repaint();
@@ -86,9 +67,9 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 		
 		if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyChar() == 'w')
 		{
-			if(!jump)
+			if(!player1.isJumping)
 			{
-				jump = true;
+				player1.isJumping = true;
 				player1.up = true;
 			}
 		}

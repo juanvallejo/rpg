@@ -12,9 +12,9 @@ public class hero implements constants
 	private int heroHeight = 30;
 	public int dx = 2;
 	public int dy = 2;
-	private int x = 0;
+	private int x = 0,jc=0,dc=0;
 	private int y = constants.HEIGHT-50-heroHeight;
-	public boolean up = false;
+	public boolean up, isJumping = false;
 	public Rectangle heroBorder, r1, r2, r3, r4, r5;
 	public Line left, right, top, down;
 	public hero()
@@ -56,7 +56,30 @@ public class hero implements constants
 			y -= 1;
 		}
 	}
-	
+	public void jump() {
+		double offset = this.heroHeight * 0.9;
+		System.out.println(offset);
+		int o = (int)offset;
+		jc++;
+		if(this.up)
+		this.moveY(o*-1);
+
+		if(!this.up)
+		{
+			this.moveY(o);
+			dc++;
+			if(dc==10)
+			{
+			 this.isJumping = false;
+			  dc = 0;
+			}
+		}
+		if(jc==10)
+		{
+			this.up = false;
+			jc = 0;
+		}
+	}
 	
 	public void paint(Graphics g)
 	{
@@ -77,7 +100,7 @@ public class hero implements constants
 	
 	public void collisionLogic(Rectangle temp)
 	{
-		System.out.println("("+heroBorder.x+","+temp.x+")");
+		//System.out.println("("+heroBorder.x+","+temp.x+")");
 		
 		if((heroBorder.x) == (temp.x - heroWidth))
 		{
