@@ -15,6 +15,7 @@ public class hero implements constants
 	private int x = 0,jc=0,dc=0;
 	private int y = constants.HEIGHT-50-heroHeight;
 	public boolean isMovingUp,isMovingLeft,isMovingRight,isJumping = false;
+	public boolean canMoveRight,canMoveLeft = true;
 	public Rectangle heroBorder, r1, r2, r3, r4, r5;
 	public Line left, right, top, down;
 	public hero()
@@ -101,16 +102,12 @@ public class hero implements constants
 	{
 		//System.out.println("("+heroBorder.x+","+temp.x+")");
 		
-		if((heroBorder.x+heroWidth) >= (temp.x))
+		if((this.x+heroWidth) >= (temp.x))
 		{
-			moveX(-2);
-		}
-		
-		
-		else
-		{
-			dx = 2;
-			dy = 2;
+			this.isMovingRight = false;
+			this.canMoveRight = false;
+		} else {
+			this.canMoveRight = true;
 		}
 	}
 }
