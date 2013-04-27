@@ -57,7 +57,7 @@ public class hero implements constants
 		}
 	}
 	public void jump() {
-		double offset = this.heroHeight * 0.9;
+		double offset = this.heroHeight * 0.3;
 		System.out.println(offset);
 		int o = (int)offset;
 		jc++;
