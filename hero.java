@@ -102,7 +102,7 @@ public class hero implements constants
 	{
 		//System.out.println("("+heroBorder.x+","+temp.x+")");
 		
-		if((this.x+heroWidth) >= (temp.x))
+		if((this.x+heroWidth) >= (temp.x) && this.x <= (temp.x+temp.width) && (this.y+this.heroHeight) >= temp.y)
 		{
 			this.isMovingRight = false;
 			this.canMoveRight = false;

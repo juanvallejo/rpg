@@ -27,21 +27,21 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	
 	
 	ActionListener game = new ActionListener() {
-	      public void actionPerformed(ActionEvent evt) {
-	    	  if(player1.isMovingRight)
-	    		  player1.moveX(player1.dx);
-	    	  
-	    	  if(player1.isMovingLeft)
-	    		  player1.moveX(-player1.dx);
-	    	  
-	    	  if(player1.isJumping)
-	    	  {
-	    		  player1.jump();
-	    	  }
-	    	  
-	    	  repaint();
-	      }
-	  };
+		public void actionPerformed(ActionEvent evt) {
+			if(player1.isMovingRight)
+				player1.moveX(player1.dx);
+
+			if(player1.isMovingLeft)
+				player1.moveX(-player1.dx);
+
+			if(player1.isJumping)
+			{
+				player1.jump();
+			}
+
+			repaint();
+		}
+	};
 	
 	
 	public void paint(Graphics g)
