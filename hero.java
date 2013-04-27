@@ -14,7 +14,7 @@ public class hero implements constants
 	public int dy = 2;
 	private int x = 0,jc=0,dc=0;
 	private int y = constants.HEIGHT-50-heroHeight;
-	public boolean up, isJumping = false;
+	public boolean isMovingUp,isMovingLeft,isMovingRight,isJumping = false;
 	public Rectangle heroBorder, r1, r2, r3, r4, r5;
 	public Line left, right, top, down;
 	public hero()
@@ -58,13 +58,12 @@ public class hero implements constants
 	}
 	public void jump() {
 		double offset = this.heroHeight * 0.3;
-		System.out.println(offset);
 		int o = (int)offset;
 		jc++;
-		if(this.up)
+		if(this.isMovingUp)
 		this.moveY(o*-1);
 
-		if(!this.up)
+		if(!this.isMovingUp)
 		{
 			this.moveY(o);
 			dc++;
@@ -76,7 +75,7 @@ public class hero implements constants
 		}
 		if(jc==10)
 		{
-			this.up = false;
+			this.isMovingUp = false;
 			jc = 0;
 		}
 	}
@@ -102,7 +101,7 @@ public class hero implements constants
 	{
 		//System.out.println("("+heroBorder.x+","+temp.x+")");
 		
-		if((heroBorder.x) == (temp.x - heroWidth))
+		if((heroBorder.x+heroWidth) >= (temp.x))
 		{
 			moveX(-2);
 		}

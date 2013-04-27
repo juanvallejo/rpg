@@ -28,10 +28,10 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	
 	ActionListener game = new ActionListener() {
 	      public void actionPerformed(ActionEvent evt) {
-	    	  if(moveRight)
+	    	  if(player1.isMovingRight)
 	    		  player1.moveX(player1.dx);
 	    	  
-	    	  if(moveLeft)
+	    	  if(player1.isMovingLeft)
 	    		  player1.moveX(-player1.dx);
 	    	  
 	    	  if(player1.isJumping)
@@ -57,20 +57,20 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyChar()=='a')
-			moveLeft = true;
+			player1.isMovingLeft = true;
 		
 		if(e.getKeyChar()=='s')
-			player1.up = false;
+			player1.isMovingUp = false;
 		
 		if(e.getKeyChar()=='d')
-			moveRight = true;
+			player1.isMovingRight = true;
 		
 		if(e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyChar() == 'w')
 		{
 			if(!player1.isJumping)
 			{
 				player1.isJumping = true;
-				player1.up = true;
+				player1.isMovingUp = true;
 			}
 		}
 		
@@ -78,9 +78,9 @@ public class window extends JPanel implements ActionListener, KeyListener, const
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyChar()=='d')
-			moveRight = false;
+			player1.isMovingRight = false;
 		if(e.getKeyChar()=='a')
-			moveLeft = false;
+			player1.isMovingLeft = false;
 	}
 	
 	@Override
